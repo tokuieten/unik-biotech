@@ -8,8 +8,9 @@ import ProductCard from "./ProductCard";
 import { PRODUCTS } from "@/data/products";
 
 export default function FeaturedProducts() {
-  const featuredProducts =
-    PRODUCTS.filter((product) => product.featured).slice(0, 6);
+  const featuredProducts = PRODUCTS
+    .filter((product) => product.featured)
+    .slice(0, 6);
 
   if (featuredProducts.length === 0) {
     return null;
@@ -66,7 +67,7 @@ export default function FeaturedProducts() {
 
         </div>
 
-        {/* Grid */}
+        {/* Featured Grid */}
 
         <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
 
@@ -74,6 +75,7 @@ export default function FeaturedProducts() {
             <ProductCard
               key={product.slug}
               product={product}
+              featured
             />
           ))}
 

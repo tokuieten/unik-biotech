@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+
 import {
   ArrowRight,
   CheckCircle2,
@@ -9,6 +12,8 @@ import {
 export interface Product {
   id: number;
   name: string;
+  slug: string;
+  image: string;
   category: string;
   composition: string;
   description: string;
@@ -39,7 +44,7 @@ export default function ProductCard({
       className="
         group
         overflow-hidden
-        rounded-[28px]
+        rounded-[30px]
         border
         border-slate-200
         bg-white
@@ -50,132 +55,110 @@ export default function ProductCard({
         hover:shadow-2xl
       "
     >
-      {/* Header */}
+      {/* Image */}
 
-      <div
-        className={`
-          relative
-          overflow-hidden
-          bg-linear-to-br
-          ${gradients[product.color]}
-          p-7
-          text-white
-        `}
-      >
-        <div
-          className="
-            absolute
-            inset-0
-            opacity-10
-            bg-[radial-gradient(circle_at_top_right,white,transparent_60%)]
-          "
-        />
+      <div className="relative h-72 bg-[#F8FBF8]">
 
-        <div
-          className="
-            absolute
-            -right-16
-            -top-16
-            h-44
-            w-44
-            rounded-full
-            border
-            border-white/20
-          "
-        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,.08),transparent_70%)]" />
 
-        <span
-          className="
-            inline-flex
-            rounded-full
-            border
-            border-white/30
-            bg-white/15
-            px-4
-            py-1
-            text-[11px]
-            font-semibold
-            uppercase
-            tracking-[0.25em]
-            backdrop-blur
-          "
-        >
-          {product.category}
-        </span>
+        <div className="absolute right-5 top-5">
 
-        <h3 className="mt-6 text-3xl font-black">
-          {product.name}
-        </h3>
+          <span
+            className={`
+              rounded-full
+              px-4
+              py-2
+              text-xs
+              font-semibold
+              uppercase
+              tracking-[0.2em]
+              text-white
+              bg-linear-to-r
+              ${gradients[product.color]}
+            `}
+          >
+            {product.category}
+          </span>
 
-        <p className="mt-3 text-sm text-white/90">
-          {product.composition}
-        </p>
+        </div>
+
+        <div className="flex h-full items-center justify-center p-8">
+
+          <Image
+            src={product.image}
+            alt={product.name}
+            width={280}
+            height={280}
+            className="
+              h-auto
+              max-h-60
+              w-auto
+              max-w-60
+              object-contain
+              transition-all
+              duration-500
+              group-hover:scale-105
+            "
+          />
+
+        </div>
+
       </div>
 
       {/* Body */}
 
       <div className="p-7">
 
-        <p className="text-[15px] leading-7 text-slate-600">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-700">
+          {product.composition}
+        </p>
+
+        <h3 className="mt-3 text-3xl font-black text-slate-900">
+          {product.name}
+        </h3>
+
+        <p className="mt-4 text-[15px] leading-7 text-slate-600">
           {product.description}
         </p>
 
-        <div className="mt-8 space-y-4">
+        <div className="mt-8 space-y-3">
 
-          {product.benefits.map((benefit) => (
+          {product.benefits.slice(0, 3).map((benefit) => (
             <div
               key={benefit}
-              className="flex items-start gap-3"
+              className="flex items-center gap-3"
             >
               <CheckCircle2
                 size={18}
-                className="
-                  mt-0.5
-                  shrink-0
-                  text-emerald-600
-                "
+                className="text-emerald-600"
               />
 
               <span className="text-sm text-slate-600">
                 {benefit}
               </span>
-
             </div>
           ))}
 
         </div>
 
-        <div
-          className="
-            mt-10
-            flex
-            items-center
-            justify-between
-          "
-        >
-          <div
-            className="
-              flex
-              items-center
-              gap-2
-              text-sm
-              font-medium
-              text-emerald-700
-            "
-          >
+        <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-6">
+
+          <div className="flex items-center gap-2 text-sm font-medium text-emerald-700">
+
             <Leaf size={18} />
 
             Premium Formula
+
           </div>
 
-          <button
+          <Link
+            href={`/products/${product.slug}`}
             className="
-              group/button
               inline-flex
               items-center
               gap-2
               rounded-full
-              bg-slate-900
+              bg-emerald-700
               px-5
               py-3
               text-sm
@@ -183,24 +166,21 @@ export default function ProductCard({
               text-white
               transition-all
               duration-300
-              hover:bg-emerald-700
+              hover:bg-emerald-600
             "
           >
-            Dealer Contact
+            View Product
 
             <ArrowRight
               size={16}
-              className="
-                transition-transform
-                duration-300
-                group-hover/button:translate-x-1
-              "
             />
-          </button>
+
+          </Link>
 
         </div>
 
       </div>
+
     </article>
   );
 }
