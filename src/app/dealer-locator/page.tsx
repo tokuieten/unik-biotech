@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
-import DealerHero from "@/components/dealer/DealerHero";
-import DealerCTA from "@/components/dealer/DealerCTA";
+import DealerHero from "@/components/dealer/DealerHero";  
 
 import DealerClient from "./DealerClient";
 
@@ -39,12 +38,6 @@ export default function DealerLocatorPage() {
       <DealerClient
         dealers={DEALERS}
       />
-
-      {/* ======================================================
-          CTA
-      ======================================================= */}
-
-      <DealerCTA />
     </>
   );
 }

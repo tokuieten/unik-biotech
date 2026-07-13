@@ -63,7 +63,7 @@ export default function ProductCTA() {
               </Link>
 
               <Link
-                href="/dealer"
+                href="/dealer-locator#dealer-grid"
                 className="group inline-flex items-center justify-between rounded-2xl border border-white/15 bg-white/10 px-6 py-4 font-semibold text-white backdrop-blur transition-all duration-300 hover:bg-white/15"
               >
                 <span className="flex items-center gap-2">

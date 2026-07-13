@@ -197,7 +197,7 @@ export default function ProductHero({
               </Link>
 
               <Link
-                href="/dealer"
+                href="/dealer-locator#dealer-grid"
                 className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-8 py-4 font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:bg-white/10"
               >
                 Find Dealer

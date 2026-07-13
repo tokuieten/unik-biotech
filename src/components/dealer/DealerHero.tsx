@@ -27,7 +27,7 @@ export default function DealerHero({
           alt="UNIK BIOTECH Dealer Network"
           fill
           priority
-          quality={80}
+          quality={75}
           sizes="100vw"
           className="object-cover object-center"
         />

@@ -72,7 +72,7 @@ export default function DealerCTA() {
             <div className="space-y-5">
 
               <Link
-                href="/dealer-locator"
+                href="/dealer-locator#dealer-grid"
                 className="group flex items-center justify-between rounded-2xl bg-white px-8 py-6 font-semibold text-emerald-900 transition-all duration-300 hover:scale-[1.02]"
               >
 

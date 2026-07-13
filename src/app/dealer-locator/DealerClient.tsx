@@ -1,8 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
-import DealerSearch from "@/components/dealer/DealerSearch";
 import DealerFilters from "@/components/dealer/DealerFilters";
 import DealerGrid from "@/components/dealer/DealerGrid";
 import DealerMap from "@/components/dealer/DealerMap";
@@ -20,7 +18,6 @@ type DealerClientProps = {
 export default function DealerClient({
   dealers,
 }: DealerClientProps) {
-  const [search, setSearch] = useState("");
 
   const [selectedState, setSelectedState] =
     useState("all");
@@ -73,7 +70,6 @@ export default function DealerClient({
   ========================================================== */
 
   const filteredDealers = useMemo(() => {
-    const keyword = search.trim().toLowerCase();
 
     return dealers.filter((dealer) => {
       const stateMatch =
@@ -89,30 +85,9 @@ export default function DealerClient({
         return false;
       }
 
-      if (!keyword) {
-        return true;
-      }
-
-      const searchable = [
-        dealer.dealerName,
-        dealer.owner,
-        dealer.city,
-        dealer.district,
-        dealer.state,
-        dealer.address,
-        dealer.products.join(" "),
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      return searchable.includes(keyword);
+      return true;
     });
-  }, [
-    dealers,
-    search,
-    selectedState,
-    selectedDistrict,
-  ]);
+  }, [dealers, selectedState, selectedDistrict]);
 
   /* ==========================================================
      COVERAGE
@@ -136,15 +111,6 @@ export default function DealerClient({
 
   return (
     <>
-      {/* ======================================================
-          SEARCH
-      ======================================================= */}
-
-      <DealerSearch
-        search={search}
-        totalDealers={filteredDealers.length}
-        onSearchChange={setSearch}
-      />
 
       {/* ======================================================
           FILTERS
