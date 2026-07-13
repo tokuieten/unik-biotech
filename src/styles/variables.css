@@ -1,0 +1,143 @@
+/* ===========================================================
+   UNIK BIOTECH DESIGN SYSTEM
+   Version: 1.0
+   =========================================================== */
+
+:root {
+  /* ===========================================================
+     COLORS
+  =========================================================== */
+
+  --color-background: #f7f6f1;
+  --color-surface: #ffffff;
+  --color-surface-secondary: #fcfcfa;
+
+  --color-primary: #0f4d33;
+  --color-primary-dark: #083824;
+  --color-primary-light: #1b6a46;
+
+  --color-secondary: #82d48e;
+  --color-secondary-light: #b8f0bf;
+
+  --color-accent: #d6a54a;
+  --color-accent-light: #f5d68c;
+
+  --color-text: #17212b;
+  --color-text-light: #677381;
+  --color-text-muted: #94a3b8;
+
+  --color-border: #dfe7df;
+  --color-border-light: #edf2ee;
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  /* ===========================================================
+     GRADIENTS
+  =========================================================== */
+
+  --gradient-primary: linear-gradient(
+    135deg,
+    #083824 0%,
+    #0f4d33 55%,
+    #1b6a46 100%
+  );
+
+  --gradient-secondary: linear-gradient(135deg, #82d48e, #b8f0bf);
+
+  --gradient-card: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(252, 252, 250, 0.96)
+  );
+
+  --gradient-background: linear-gradient(180deg, #f7f6f1 0%, #fdfdfb 100%);
+
+  --gradient-overlay: linear-gradient(
+    135deg,
+    rgba(8, 56, 36, 0.9),
+    rgba(15, 77, 51, 0.78),
+    rgba(15, 77, 51, 0.55)
+  );
+
+  /* ===========================================================
+     SHADOWS
+  =========================================================== */
+
+  --shadow-xs: 0 2px 6px rgba(15, 77, 51, 0.04);
+
+  --shadow-sm: 0 8px 20px rgba(15, 77, 51, 0.06);
+
+  --shadow-md: 0 14px 35px rgba(15, 77, 51, 0.08);
+
+  --shadow-lg: 0 24px 60px rgba(15, 77, 51, 0.12);
+
+  --shadow-xl: 0 40px 100px rgba(15, 77, 51, 0.16);
+
+  --shadow-glow: 0 0 80px rgba(130, 212, 142, 0.18);
+
+  /* ===========================================================
+     BORDER RADIUS
+  =========================================================== */
+
+  --radius-xs: 10px;
+  --radius-sm: 16px;
+  --radius-md: 22px;
+  --radius-lg: 30px;
+  --radius-xl: 40px;
+  --radius-2xl: 52px;
+  --radius-full: 999px;
+
+  /* ===========================================================
+     BLUR
+  =========================================================== */
+
+  --blur-sm: 8px;
+  --blur-md: 18px;
+  --blur-lg: 32px;
+
+  /* ===========================================================
+     TRANSITIONS
+  =========================================================== */
+
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ===========================================================
+     SPACING
+  =========================================================== */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* ===========================================================
+     LAYOUT
+  =========================================================== */
+
+  --container-sm: 960px;
+  --container-md: 1200px;
+  --container-lg: 1380px;
+
+  --navbar-height: 86px;
+
+  /* ===========================================================
+     Z INDEX
+  =========================================================== */
+
+  --z-navbar: 100;
+  --z-dropdown: 200;
+  --z-modal: 500;
+  --z-toast: 1000;
+}

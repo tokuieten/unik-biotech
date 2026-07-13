@@ -1,0 +1,435 @@
+/* ============================================================
+   UNIK BIOTECH — MOTION SYSTEM
+   COMPOSITOR-AWARE / LOW-IDLE-COST
+============================================================ */
+
+/* ============================================================
+   MOTION TOKENS
+============================================================ */
+
+:root {
+  --motion-instant: 140ms;
+  --motion-fast: 220ms;
+  --motion-normal: 360ms;
+  --motion-slow: 620ms;
+  --motion-cinematic: 1000ms;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   MOTION HELPERS
+
+   IMPORTANT:
+   These classes define transition behavior.
+
+   They do not permanently request compositor promotion.
+============================================================ */
+
+.motion-transform {
+  transition: transform var(--motion-normal) var(--ease-spring);
+}
+
+.motion-opacity {
+  transition: opacity var(--motion-normal) var(--ease-standard);
+}
+
+.motion-transform-opacity {
+  transition:
+    transform var(--motion-normal) var(--ease-spring),
+    opacity var(--motion-normal) var(--ease-standard);
+}
+
+/* ============================================================
+   SHARED PERFORMANCE TRANSITION
+============================================================ */
+
+.transition-performance {
+  transition:
+    transform var(--motion-normal) var(--ease-spring),
+    opacity var(--motion-normal) var(--ease-standard);
+}
+
+/* ============================================================
+   FADE UP
+============================================================ */
+
+@keyframes unik-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: unik-fade-up var(--motion-slow) var(--ease-enter) both;
+}
+
+/* ============================================================
+   FADE
+============================================================ */
+
+@keyframes unik-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade {
+  animation: unik-fade var(--motion-slow) var(--ease-standard) both;
+}
+
+/* ============================================================
+   SCALE REVEAL
+============================================================ */
+
+@keyframes unik-scale-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-scale-reveal {
+  animation: unik-scale-reveal var(--motion-slow) var(--ease-enter) both;
+}
+
+/* ============================================================
+   HERO IMAGE
+   ONE-TIME ENTRANCE ONLY
+============================================================ */
+
+@keyframes unik-hero-enter {
+  from {
+    transform: scale(1.045);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-hero {
+  animation: unik-hero-enter 1800ms var(--ease-enter) both;
+
+  transform-origin: center;
+}
+
+/* ============================================================
+   SMALL DECORATIVE FLOAT
+============================================================ */
+
+@keyframes unik-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: unik-float 8s var(--ease-standard) infinite;
+}
+
+/* ============================================================
+   SCROLL INDICATOR
+============================================================ */
+
+@keyframes unik-scroll {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+}
+
+.animate-scroll-indicator {
+  animation: unik-scroll 2.2s var(--ease-standard) infinite;
+}
+
+/* ============================================================
+   HERO SCROLL INDICATOR
+============================================================ */
+
+@keyframes heroScroll {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(225%);
+  }
+}
+
+/* ============================================================
+   PRODUCT REVEAL
+============================================================ */
+
+.product-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+
+  pointer-events: none;
+
+  transition:
+    opacity var(--motion-normal) var(--ease-enter),
+    transform var(--motion-normal) var(--ease-enter);
+}
+
+.product-card[data-active="true"] .product-reveal {
+  opacity: 1;
+  transform: translateY(0);
+
+  pointer-events: auto;
+}
+
+/* ============================================================
+   PRODUCT CARD
+============================================================ */
+
+.product-card {
+  transition:
+    transform var(--motion-normal) var(--ease-spring),
+    border-color var(--motion-normal) var(--ease-standard),
+    box-shadow var(--motion-normal) var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-card:hover,
+  .product-card[data-active="true"] {
+    transform: translateY(-8px);
+  }
+}
+
+/* ============================================================
+   ICON MOTION
+============================================================ */
+
+.motion-icon {
+  transition: transform var(--motion-fast) var(--ease-spring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .motion-icon {
+    transform: translateX(4px);
+  }
+}
+
+/* ============================================================
+   BUTTON MOTION
+============================================================ */
+
+.motion-button {
+  transition:
+    transform var(--motion-fast) var(--ease-spring),
+    background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-button:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.motion-button:active {
+  transform: scale(0.98);
+}
+
+/* ============================================================
+   TESTIMONIALS
+============================================================ */
+
+.testimonial-card {
+  transition:
+    transform 520ms var(--ease-spring),
+    border-color 420ms var(--ease-standard),
+    box-shadow 520ms var(--ease-spring);
+}
+
+.testimonial-image {
+  transform: scale(1.001);
+
+  transition: transform 900ms var(--ease-spring);
+}
+
+.testimonial-metric {
+  transition:
+    transform 520ms var(--ease-spring),
+    background-color 420ms var(--ease-standard),
+    box-shadow 520ms var(--ease-spring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .testimonial-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(16, 185, 129, 0.25);
+
+    box-shadow:
+      0 30px 75px rgba(18, 55, 38, 0.11),
+      0 8px 24px rgba(18, 55, 38, 0.05);
+  }
+
+  .testimonial-card:hover .testimonial-image {
+    transform: scale(1.055);
+  }
+
+  .testimonial-card:hover .testimonial-metric {
+    transform: translateY(-3px);
+
+    background-color: rgba(255, 255, 255, 0.94);
+
+    box-shadow: 0 18px 42px rgba(8, 35, 21, 0.14);
+  }
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.nav-link {
+  position: relative;
+
+  transition:
+    color 350ms var(--ease-standard),
+    transform 350ms var(--ease-spring);
+}
+
+.nav-link::after {
+  position: absolute;
+
+  bottom: -10px;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: #0b8e3b;
+
+  content: "";
+
+  transform: scaleX(0);
+  transform-origin: center;
+
+  transition: transform 350ms var(--ease-spring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover {
+    transform: translateY(-1px);
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.nav-active::after {
+  transform: scaleX(1);
+}
+
+.header-button {
+  transition:
+    transform 350ms var(--ease-spring),
+    box-shadow 350ms var(--ease-standard),
+    background-color 350ms var(--ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header-button:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.logo-hover {
+  transition: transform 450ms var(--ease-spring);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .logo-hover:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .motion-transform,
+  .motion-transform-opacity,
+  .animate-fade-up,
+  .animate-scale-reveal,
+  .animate-hero,
+  .animate-float,
+  .animate-scroll-indicator,
+  .product-card,
+  .product-reveal,
+  .motion-icon,
+  .motion-button,
+  .testimonial-card,
+  .testimonial-image,
+  .testimonial-metric,
+  .header-button,
+  .logo-hover,
+  .nav-link {
+    transform: none !important;
+  }
+}
