@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
-  ArrowRight,
   MapPin,
   Store,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -89,22 +87,6 @@ export default function DealerHero({
           {/* Buttons */}
 
           <div className="mt-12 flex flex-wrap gap-5">
-
-            <Link
-              href="#dealer-search"
-              className="inline-flex items-center gap-3 rounded-full bg-emerald-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-500"
-            >
-              Find Dealer
-
-              <ArrowRight size={18} />
-            </Link>
-
-            <Link
-              href="#become-dealer"
-              className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur transition-all duration-300 hover:bg-white/20"
-            >
-              Become a Dealer
-            </Link>
 
           </div>
 

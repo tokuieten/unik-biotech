@@ -324,6 +324,7 @@ export default function Header() {
       src="/images/logo/logo.jpg"
       alt={siteConfig.name}
       fill
+      loading="eager"
       sizes="190px"
       className="
         object-contain
